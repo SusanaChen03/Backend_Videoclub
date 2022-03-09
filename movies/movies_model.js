@@ -3,3 +3,5 @@ const movies = [
     {"id":12,"title":"Red Alert","genre":"comedy","leadActor":"TheRock",},
     {"id":20,"title":"Hotel Transilvania","genre":"kids","leadActor":"Adam Sandler",},
 ]
+
+module.exports = movies;
