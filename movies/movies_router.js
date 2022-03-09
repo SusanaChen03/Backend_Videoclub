@@ -8,3 +8,5 @@ const middleware = require ('./movies_controller.js');
 router.get('/movies',middleware.getmovies);
 
 router.get('/movies/:id',middleware.getById);
+
+router.get('/movies/search/:title',middleware.getByTitle);

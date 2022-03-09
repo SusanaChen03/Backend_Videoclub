@@ -16,3 +16,15 @@ module.exports.getById = (req,res)=>{
     });
     res.send(findId);
 };
+
+
+module.exports.getByTitle = (req,res)=>{
+    
+    let findTitle = movies.find((element)=>{
+        if(element.title.toUpperCase() == req.params.title.toUpperCase()){
+            return true;
+        };
+    });
+    console.log("resuleta" +findTitle);
+    res.send(findTitle);
+};
