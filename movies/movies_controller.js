@@ -25,6 +25,6 @@ module.exports.getByTitle = (req,res)=>{
             return true;
         };
     });
-    console.log("resuleta" +findTitle);
+    console.log(findTitle);
     res.send(findTitle);
 };
