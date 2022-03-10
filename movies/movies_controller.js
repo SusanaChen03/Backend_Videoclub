@@ -2,9 +2,7 @@
 const Movie = require('./movies_model');
 
 
-
-
-module.exports.postmovies = async (req,res)=>{    //añadir un objeto
+module.exports.postMovies = async (req,res)=>{    //añadir un objeto
     const movie = new Movie(req.body);
     console.log(req.body);
     await movie.save();
@@ -12,8 +10,8 @@ module.exports.postmovies = async (req,res)=>{    //añadir un objeto
 };
 
 
-module.exports.getmovies = async (req,res)=>{    //buscar por query params
-    if(req.query.name){
+module.exports.getMovies = async (req,res)=>{    //buscar por query params
+    if(req.query.name){                            //busqueda por nombre de película, género y actor
         const list = await Movie.find({
             name:req.query.name
         });
@@ -34,27 +32,46 @@ module.exports.getmovies = async (req,res)=>{    //buscar por query params
     }
 
 };
-       
 
 
+module.exports.getById = async (req,res)=>{
 
-
-
-
-
-
-module.exports.getById = (req,res)=>{
-
-    let findId = movies.find((element)=>{
-        if(element.id == req.params.id){
-            return true;
-        }
-    });
-    res.send(findId);
+    let findId = await Movie.findById(req.params.id);
+    res.json (findId);
 };
 
 
-module.exports.getByTitle = (req,res)=>{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*module.exports.getByTitle = (req,res)=>{
     
     let findTitle = movies.find((element)=>{
         if(element.title.toUpperCase() == req.params.title.toUpperCase()){
@@ -63,11 +80,7 @@ module.exports.getByTitle = (req,res)=>{
     });
     console.log(findTitle);
     res.send(findTitle);
-};
-
-
-
-
+};/*
 
 
 

@@ -5,9 +5,9 @@ module.exports = router;
 const middleware = require ('./movies_controller.js');
 
 
-router.post('/movies',middleware.postmovies);
+router.post('/movies',middleware.postMovies);
 
-router.get('/movies',middleware.getmovies);
+router.get('/movies',middleware.getMovies);
 
 router.get('/movies/:id',middleware.getById);
 
