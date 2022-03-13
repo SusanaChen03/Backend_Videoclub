@@ -5,7 +5,7 @@ const Movie = require('./movies_model');
 
 
 
-module.exports.postmovies = async (req,res)=>{
+module.exports.postMovies = async (req,res)=>{
     const movie = new Movie(req.body);
     console.log(req.body);
     await movie.save();
@@ -13,7 +13,7 @@ module.exports.postmovies = async (req,res)=>{
 };
 
 
-module.exports.getmovies = async (req,res)=>{
+module.exports.getMovies = async (req,res)=>{
     if(req.query.name){
         const list = await Movie.find({
             name:req.query.name
@@ -23,7 +23,7 @@ module.exports.getmovies = async (req,res)=>{
         const list = await Movie.find({});
         res.json (list);
     }
-    
+
 };
 
 
@@ -38,8 +38,8 @@ module.exports.getById = (req,res)=>{
 };
 
 
-module.exports.getByTitle = (req,res)=>{
-    
+/*module.exports.getByTitle = (req,res)=>{
+
     let findTitle = movies.find((element)=>{
         if(element.title.toUpperCase() == req.params.title.toUpperCase()){
             return true;
@@ -47,4 +47,4 @@ module.exports.getByTitle = (req,res)=>{
     });
     console.log(findTitle);
     res.send(findTitle);
-};
+};*/
