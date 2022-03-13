@@ -1,5 +1,5 @@
 
-const movies = require('./movies_model');
+//const movies = require('./movies_model');
 const Movie = require('./movies_model');
 
 
