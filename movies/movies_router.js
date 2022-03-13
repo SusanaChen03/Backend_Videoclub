@@ -11,5 +11,7 @@ router.get('/movies',middleware.getMovies);
 
 router.get('/movies/:id',middleware.getById);
 
-//router.get('/movies/:name',middleware.getByTitle);
+router.patch('/movies',middleware.updateMovies);
+
+router.delete('/movies',middleware.deleteMovies);
 
