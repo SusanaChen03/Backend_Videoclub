@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require('express');     //import expressApi from express
 const app = express();
 const port = 8020;
 
-const routerMovies = require('./movies/movies_router');
+const routerMovies = require('./movies/movies_router');     //import routerMovies from ('/movies/movies_router')
 const routerUsers = require('./users/user_router');
 
 const mongoose = require ('mongoose');
