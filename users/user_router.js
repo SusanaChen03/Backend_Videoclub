@@ -15,3 +15,4 @@ router.patch('/user',middleware.updateUser);
 
 router.delete('/user/:id',middleware.deleteUser);
 
+router.post('/login',middleware.loginUser);

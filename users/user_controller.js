@@ -1,4 +1,6 @@
 const user = require('./user_model');
+const jwt = require ('jsonwebtoken');
+
 
 
 //Añadir un usuario nuevo.
@@ -42,3 +44,22 @@ module.exports.deleteUser = async (req,res)=>{
         res.json(await user.deleteOne({_id:req.params.id}));
     };
 };
+
+
+module.exports.loginUser = async (req,res)=>{
+
+    const findLog = await user.findOne({
+        name: req.headers.name,
+        password: req.headers.password,
+    });
+    if(findLog){
+        const token = jwt.sign(req.headers.name,'ababaa');
+        res.json(token);
+    }else {
+        res.status(401).json('');
+    };
+};
+
+
+
+//const token =  jwt.sign(req.headers.email+req.headers.password,'secretKey')
