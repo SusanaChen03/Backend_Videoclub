@@ -1,11 +1,12 @@
 
 //const movies = require('./movies_model');
-const Movie = require('./movies_model');
+import Movie from './movies_model.js';
 
+export {postMovies, getMovies, getById, updateMovies, deleteMovies };
 
 
 //Añadir un objeto nuevo
-module.exports.postMovies = async (req,res)=>{
+const postMovies = async (req,res)=>{
 
     const movie = new Movie(req.body);
     await movie.save();
@@ -14,7 +15,7 @@ module.exports.postMovies = async (req,res)=>{
 
 
 //Búsqueda por query params, nombre de película, genero y actor
-module.exports.getMovies = async (req,res)=>{
+const getMovies = async (req,res)=>{
 
     if(req.query.name){
         const list = await Movie.find({
@@ -39,7 +40,7 @@ module.exports.getMovies = async (req,res)=>{
 };
 
 // Búsqueda por id
-module.exports.getById = async (req,res)=>{
+const getById = async (req,res)=>{
 
     let findId = await Movie.findById(req.params.id);
     res.json (findId);
@@ -47,14 +48,14 @@ module.exports.getById = async (req,res)=>{
 
 
 //Actualización de nombre de película
-module.exports.updateMovies = async (req,res)=>{
+const updateMovies = async (req,res)=>{
 
     await Movie.updateOne({name: req.query.name}, {name:req.body.name})
     res.status(200).json('changes correctly')
 };
 
 //Borrar objeto por nombre
-module.exports.deleteMovies = async (req,res)=>{
+const deleteMovies = async (req,res)=>{
 
     if(req.query.name){
        res.json(await movies.deleteOne({name: req.query.name}));

@@ -1,18 +1,19 @@
-const express = require ('express');
+import express from 'express';
 const router = express.Router();
-module.exports = router;
-
-const middleware = require ('./user_controller.js');
+import {postUser, getUser, findById, updateUser, deleteUser, loginUser} from "./user_controller.js";
 
 
-router.post('/user',middleware.postUser);
+router.post('/user', postUser);
 
-router.get('/user', middleware.getUser);
+router.get('/user', getUser);
 
-router.get('/user/:id',middleware.findById);
+router.get('/user/:id', findById);
 
-router.patch('/user',middleware.updateUser);
+router.patch('/user', updateUser);
 
-router.delete('/user/:id',middleware.deleteUser);
+router.delete('/user/:id', deleteUser);
 
-router.post('/login',middleware.loginUser);
+router.post('/login', loginUser);
+
+
+export default router;

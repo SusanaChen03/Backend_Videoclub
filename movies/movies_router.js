@@ -1,17 +1,19 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-module.exports = router;
 
-const middleware = require ('./movies_controller.js');
+import {postMovies, getMovies, getById, updateMovies, deleteMovies} from './movies_controller.js';
 
 
-router.post('/movies',middleware.postMovies);
 
-router.get('/movies',middleware.getMovies);
 
-router.get('/movies/:id',middleware.getById);
+router.post('/movies', postMovies);
 
-router.patch('/movies',middleware.updateMovies);
+router.get('/movies', getMovies);
 
-router.delete('/movies',middleware.deleteMovies);
+router.get('/movies/:id', getById);
 
+router.patch('/movies', updateMovies);
+
+router.delete('/movies', deleteMovies);
+
+export default router;
