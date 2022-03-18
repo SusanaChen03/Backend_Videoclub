@@ -9,6 +9,7 @@ const connection = async ()=>{
         { useNewUrlParser: true;
         useUnifiedTopology: true;
         console.log("Servidor de mongo escuchando")};
+        console.log('chacshgdhsdj');
     } catch (error) {
         console.log(error)
     };

@@ -6,9 +6,10 @@ import routerMovies from './movies/movies_router.js';
 import  connect  from './config/database.js';
 connect();
 
-const port = 8020;
 
 const app = express();
+
+const port = 8020;
 
 app.use(express.json());
 
