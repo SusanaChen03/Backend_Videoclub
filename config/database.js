@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 
 const connection = async ()=>{
     try{
-        await mongoose.connect('mongodb+srv://newproyect:chorizaco@cluster0.lekzf.mongodb.net/newproyect?retryWrites=true&w=majority')
+        await mongoose.connect('mongodb+srv://newproyect:chorizaco@cluster0.lekzf.mongodb.net/newproyect00?retryWrites=true&w=majority')
         { useNewUrlParser: true;
         useUnifiedTopology: true;
         console.log("Servidor de mongo escuchando")};
