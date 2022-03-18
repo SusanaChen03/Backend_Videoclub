@@ -44,7 +44,7 @@ const deleteUser = async (req,res)=>{
         res.json(await user.deleteOne({_id:req.params.id}));
     };
 };
-
+//hola
 
 const loginUser = async (req,res)=>{
 
