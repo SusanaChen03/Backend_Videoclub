@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 
 const connection = async ()=>{
     try{
-        await mongoose.connect('mongodb://localhost:27017/videoclub')
+        await mongoose.connect('mongodb+srv://newproyect:chorizaco@cluster0.lekzf.mongodb.net/newproyect?retryWrites=true&w=majority')
         { useNewUrlParser: true;
         useUnifiedTopology: true;
         console.log("Servidor de mongo escuchando")};
@@ -20,7 +20,7 @@ export default connection;
 
 
 
-
+// await mongoose.connect('mongodb://localhost:27017/videoclub')
 
 
 /*mongoose.connect('mongodb://localhost:27017/videoclub',{
