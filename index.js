@@ -1,15 +1,13 @@
 import express from 'express';     //import expressApi from express
-
 import routerUsers from './users/user_router.js';
 import routerMovies from './movies/movies_router.js';
-
-import  connect  from './config/database.js';
-connect();
-
+import  connection  from './config/database.js';
+const port = 8020;
 
 const app = express();
 
-const port = 8020;
+//dotenv.config()
+ await connection();
 
 app.use(express.json());
 
