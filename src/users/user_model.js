@@ -2,7 +2,9 @@ import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
     name: String,
-    password: Number, String,
+    password: String,
+    email: String,
+    role: String
 });
 
 const users = mongoose.model('users',userSchema);

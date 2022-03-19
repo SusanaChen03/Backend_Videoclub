@@ -3,9 +3,12 @@ import jwt from 'jsonwebtoken';
 
 export {postUser, getUser, findById, updateUser, deleteUser, loginUser}
 
-//Añadir un usuario nuevo.
+
 const postUser = async (req,res)=>{
-    const newUser = await user.create(req.body);
+
+    const userCreated = {name:req.body.name, password:req.body.password, role:req.body.role};  //schema nuevo
+
+    const newUser = await user.create(userCreated);
     res.status(200).json(newUser);
 }
 

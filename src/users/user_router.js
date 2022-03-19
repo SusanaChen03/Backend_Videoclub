@@ -3,7 +3,7 @@ const router = express.Router();
 import {postUser, getUser, findById, updateUser, deleteUser, loginUser} from "./user_controller.js";
 
 
-router.post('/user', postUser);
+router.post('/user', postUser);  //AÑADIR UN NUEVO USUARIO
 
 router.get('/user', getUser);
 
