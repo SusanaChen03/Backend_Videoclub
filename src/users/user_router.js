@@ -1,19 +1,23 @@
 import express from 'express';
 const router = express.Router();
-import {postUser, getUser, findById, updateUser, deleteUser, loginUser} from "./user_controller.js";
+import {postUser, getUser, findById, updateUser, deleteUser, loginUser, verifyToken, authoritation, authoritation_admin } from "./user_controller.js";
 
 
-router.post('/user', postUser);  //AÑADIR UN NUEVO USUARIO
+router.post('/user', authoritation_admin, postUser);  //AÑADIR UN NUEVO USUARIO
 
-router.get('/user', getUser);
+router.post('/login', loginUser); //LOGIN USUARIO CON EMAIL Y CONTRASEÑA
 
-router.get('/user/:id', findById);
+router.get('/user', authoritation_admin , getUser);     //BUSCAR UN USUARIO POR NOMBRE, SI NO ENCUENTRA SACAR TODA LA LISTA DE USUARIOS
 
-router.patch('/user', updateUser);
+router.get('/user/:id', authoritation_admin, findById);  //BUSCAR UN USUARIO POR ID
 
-router.delete('/user/:id', deleteUser);
+router.get('/auth/:token', authoritation_admin, verifyToken);  //DESCODIFICAR UN TOKEN Y VERIFICAR SI ES CORRECTO
 
-router.post('/login', loginUser);
+router.patch('/user',authoritation_admin, updateUser);  //BUSCAR DATOS DE USUARIO POR QUERY Y EDITAR POR BODY
+
+router.delete('/user/:id', authoritation_admin, deleteUser);     //ELIMINAR UN USUARIO POR ID
+
+
 
 
 export default router;

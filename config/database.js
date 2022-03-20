@@ -8,7 +8,7 @@ const connection = async ()=>{
         await mongoose.connect('mongodb+srv://susana:susana@cluster0.lekzf.mongodb.net/newproyect00?retryWrites=true&w=majority')
         { useNewUrlParser: true;
         useUnifiedTopology: true;
-        console.log("Servidor de mongo escuchando")};
+        console.log("Servidor de mongo remoto escuchando👌")};
     } catch (error) {
         console.log(error)
     };

@@ -1,62 +1,69 @@
 import user from './user_model.js';
 import jwt from 'jsonwebtoken';
 
-export {postUser, getUser, findById, updateUser, deleteUser, loginUser}
+export {postUser, getUser, findById, updateUser, deleteUser, loginUser, verifyToken, authoritation, authoritation_admin }
 
 
 const postUser = async (req,res)=>{
 
-    const userCreated = {name:req.body.name, password:req.body.password, role:req.body.role};  //schema nuevo
+    const userCreated = {name:req.body.name, email:req.body.email, password:req.body.password, role:req.body.role};  //schema nuevo
 
     const newUser = await user.create(userCreated);
     res.status(200).json(newUser);
 }
 
-//Búsqueda por nombre de usuario. si no toda la lista
+
 const getUser = async (req,res)=>{
 
     if (req.query.name) {
-        const list = await user.find({
+        let list = await user.find({
             name:req.query.name
         });
-        res.json(list);
+
+        if(list.length == 0){
+            list = await user.find({});
+            res.json(list);
+        }else{
+            res.json(list);
+        }
+
     }else {
         const list = await user.find({});
         res.json(list);
     };
 };
 
-//Búsqueda por id
+
 const findById = async (req,res)=>{
 
     let findId = await user.findById(req.params.id);
     res.json (findId);
 };
 
-//Actualizar usuario
+
 const updateUser = async (req,res)=>{
 
     await user.updateOne({name: req.query.name},{name:req.body.name})
     res.status(200).json('User name changes');
 };
 
-//Borrar un usuario
+
 const deleteUser = async (req,res)=>{
 
     if(req.params.id){
         res.json(await user.deleteOne({_id:req.params.id}));
     };
 };
-//hola     dsdd
 
 const loginUser = async (req,res)=>{
 
     const findLog = await user.findOne({
-        name: req.headers.name,
-        password: req.headers.password,
+        email: req.body.email,
+        password: req.body.password,
     });
     if(findLog){
-        const token = jwt.sign(req.headers.name,'ababaa');
+
+        const token = jwt.sign(findLog.role, process.env.JWT_SECRET);
         res.json(token);
     }else {
         res.status(401).json('');
@@ -64,5 +71,50 @@ const loginUser = async (req,res)=>{
 };
 
 
+const verifyToken =  (req,res) =>{
+    const token =  req.params.token;
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+          } catch(err) {
+            res.status(401).send(error);
+          }
+    res.json(decoded);
+};
 
-//const token =  jwt.sign(req.headers.email+req.headers.password,'secretKey')
+
+
+const authoritation = (req, res, next) => {
+
+	try{
+        const decoded = jwt.verify(req.headers.token, process.env.JWT_SECRET);
+		if(decoded == 'client' || decoded =='admin'){
+		    next();
+		}else{
+            console.log('error else'+ decoded);
+		res.json (403);
+		}
+	}catch(e){
+        console.log("el error es" + e)
+	res.json (401);
+	}
+};
+
+
+
+const authoritation_admin = (req, res, next) => {
+
+	try{
+        const decoded = jwt.verify(req.headers.token, process.env.JWT_SECRET);
+		if( decoded =='admin'){
+		    next();
+		}else{
+            console.log('error else'+ decoded);
+		res.json(403);
+		}
+	}catch(e){
+        console.log("el error es" + e)
+	}
+};
+
+

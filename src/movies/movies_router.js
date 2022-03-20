@@ -6,9 +6,9 @@ import {postMovies, getMovies, getById, updateMovies, deleteMovies} from './movi
 
 
 
-router.post('/movies', postMovies);
+router.post('/movies', postMovies);  //INSEETAR PELÍCULA NUEVA
 
-router.get('/movies', getMovies);
+router.get('/movies', getMovies);   //
 
 router.get('/movies/:id', getById);
 

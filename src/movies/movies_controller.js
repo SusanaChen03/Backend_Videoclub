@@ -58,7 +58,7 @@ const updateMovies = async (req,res)=>{
 const deleteMovies = async (req,res)=>{
 
     if(req.query.name){
-       res.json(await movies.deleteOne({name: req.query.name}));
+       res.json(await Movie.deleteOne({name: req.query.name}));
     }
 };
 
