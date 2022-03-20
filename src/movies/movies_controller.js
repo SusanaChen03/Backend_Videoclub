@@ -51,7 +51,7 @@ const getById = async (req,res)=>{
 const updateMovies = async (req,res)=>{
 
     await Movie.updateOne({name: req.query.name}, {name:req.body.name})
-    res.status(200).json('changes correctly')
+    res.status(200).json('film name changes correctly')
 };
 
 //Borrar objeto por nombre
