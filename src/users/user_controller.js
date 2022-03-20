@@ -114,6 +114,7 @@ const authoritation_admin = (req, res, next) => {
 		}
 	}catch(e){
         console.log("el error es" + e)
+        res.json(401);
 	}
 };
 
