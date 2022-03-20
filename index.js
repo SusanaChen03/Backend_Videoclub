@@ -13,13 +13,13 @@ await connection();
 
 app.use(express.json());
 
+app.set("port",process.env.SERVER_PORT || 3000);
+
 app.use('/',routerMovies);
 app.use('/',routerUsers);
 
-app.set("port",process.env.SERVER_PORT || 3000);
-
 app.listen(app.get("port"),()=>{
-    console.log('Servidor levantado en puerto ' + process.env.SERVER_PORT );
+    console.log('Servidor levantado en puerto ' + process.env.SERVER_PORT);
 });
 
 //app.listen(8020,()=>console.log('Servidor levantado en puerto 8020'));
