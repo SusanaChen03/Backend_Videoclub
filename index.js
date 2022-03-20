@@ -13,7 +13,7 @@ await connection();
 
 app.use(express.json());
 
-app.set("port",process.env.SERVER_PORT || 3000);
+app.set("port",process.env.PORT  || 3000);
 
 app.use('/',routerMovies);
 app.use('/',routerUsers);
