@@ -19,7 +19,7 @@ app.use('/',routerMovies);
 app.use('/',routerUsers);
 
 app.listen(app.get("port"),()=>{
-    console.log('Servidor levantado en puerto ' + process.env.SERVER_PORT);
+    console.log('Servidor levantado en puerto ' + process.env.PORT);
 });
 
 //app.listen(8020,()=>console.log('Servidor levantado en puerto 8020'));
