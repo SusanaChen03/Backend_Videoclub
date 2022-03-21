@@ -56,3 +56,7 @@ El Stack tecnológico de esta Api han sido:
 Aquí abajo teneis el link al repositorio de GitHub:
 
 [https://github.com/SusanaChen03/Backend_Videoclub](https://https://github.com/SusanaChen03/Backend_Videoclub)
+
+Heroku Git Url
+
+[https://git.heroku.com/newproyect00.git](https://https://git.heroku.com/newproyect00.git)
