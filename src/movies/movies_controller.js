@@ -17,27 +17,20 @@ const postMovies = async (req,res)=>{
 //Búsqueda por query params, nombre de película, genero y actor
 const getMovies = async (req,res)=>{
 
-    if(req.query.name){
+    if(req.query.name || req.query.genre || req.query.actor){
         const list = await Movie.find({
-            name:req.query.name
+            $or: [
+                {name: req.query.name},
+                {genre: req.query.genre},
+                {actors: req.query.actors},
+            ]
         });
-        res.json (list);
-    }else if (req.query.genre){
-        const list = await Movie.find({
-            genre:req.query.genre
-        });
-        res.json (list);
-    }else if (req.query.actor){
-        const list = await Movie.find({
-            actor:req.query.actor
-        });
-        res.json (list);
+        res.json(list);
     }else{
-        const list = await Movie.find({});
-        res.json (list);
+        const listAll = await Movie.find({});
+        res.json(listAll);
     }
-
-};
+}
 
 // Búsqueda por id
 const getById = async (req,res)=>{
@@ -50,16 +43,16 @@ const getById = async (req,res)=>{
 //Actualización de nombre de película
 const updateMovies = async (req,res)=>{
 
-    await Movie.updateOne({name: req.query.name}, {name:req.body.name})
+    await Movie.updateOne({_id:req.params.id}, {name:req.body.name, genre:req.query.genre, actor:req.query.actor }) //},req.body);
     res.status(200).json('film name changes correctly')
 };
 
 //Borrar objeto por nombre
 const deleteMovies = async (req,res)=>{
 
-    if(req.query.name){
-       res.json(await Movie.deleteOne({name: req.query.name}));
-    }
+    await Movie.deleteOne({_id:req.params.id});
+    res.json("Movie deleted");
+
 };
 
 

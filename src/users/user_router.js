@@ -7,7 +7,7 @@ router.post('/user', authoritation_admin, postUser);  //AÑADIR UN NUEVO USUARIO
 
 router.post('/login', loginUser); //LOGIN USUARIO CON EMAIL Y CONTRASEÑA
 
-router.get('/user', authoritation_admin , getUser);     //BUSCAR UN USUARIO POR NOMBRE, SI NO ENCUENTRA SACAR TODA LA LISTA DE USUARIOS
+router.get('/user', authoritation, getUser);     //BUSCAR UN USUARIO POR NOMBRE, SI NO ENCUENTRA SACAR TODA LA LISTA DE USUARIOS
 
 router.get('/user/:id', authoritation_admin, findById);  //BUSCAR UN USUARIO POR ID
 

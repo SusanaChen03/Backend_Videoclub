@@ -43,16 +43,15 @@ const findById = async (req,res)=>{
 
 const updateUser = async (req,res)=>{
 
-    await user.updateOne({name: req.query.name},{name:req.body.name})
+    await user.updateOne({_id: req.query.id},req.body);
     res.status(200).json('User name changes');
 };
 
 
 const deleteUser = async (req,res)=>{
 
-    if(req.params.id){
-        res.json(await user.deleteOne({_id:req.params.id}));
-    };
+    await user.deleteOne({_id:req.params.id});
+    res.json("User deleted");
 };
 
 const loginUser = async (req,res)=>{
