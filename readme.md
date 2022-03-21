@@ -44,6 +44,13 @@ Aquí igual que en la de usuarios también encontraremos 3 subcarpetas con los m
 
 El Stack tecnológico de esta Api han sido:
 
+😄 El Famoso Java Script.
+
+🚀️ Base de datos con MongoDB.
+
+🎉️ Entorno de ejecución Node Js.
+
+
 ![imagen](images/js.png)![imagen](images/mongodb.png)
 
 ![imagen](images/Node.js_logo.svg)
